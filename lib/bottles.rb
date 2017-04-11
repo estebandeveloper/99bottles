@@ -1,10 +1,20 @@
 class Bottles
   def verse(x)
-    remaining = (x-1) == 1 ? "#{x-1} bottle" : "#{x-1} bottles"
+    total = x == 1 ? '1 bottle' : "#{x} bottles"
+    take = x == 1 ? 'it' : 'one'
 
     result = <<-VERSE
-#{x} bottles of beer on the wall, #{x} bottles of beer.
-Take one down and pass it around, #{remaining} of beer on the wall.
+#{total} of beer on the wall, #{total} of beer.
+Take #{take} down and pass it around, #{remaining(x)} of beer on the wall.
 VERSE
   end
+
+  def remaining(qty)
+    case qty
+    when 2 then '1 bottle'
+    when 1 then 'no more bottles'
+    else "#{qty-1} bottles"
+    end
+  end
+
 end
