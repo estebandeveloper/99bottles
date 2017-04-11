@@ -7,6 +7,11 @@ class Bottles
 VERSE
   end
 
+  def verses(from, to)
+    times = *(to..from)
+    times.reverse.map {|x| verse(x)}.join("\n")
+  end
+
   def calculate(qty)
     case qty
     when 2 then ['1 bottle', 'Take one down and pass it around', "#{qty} bottles"]
