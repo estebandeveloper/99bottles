@@ -1,7 +1,7 @@
 class Bottles
   def verse(x)
     remaining, take, total = calculate(x)
-    result = <<-VERSE
+    <<-VERSE
 #{total.capitalize} of beer on the wall, #{total} of beer.
 #{take}, #{remaining} of beer on the wall.
 VERSE
@@ -10,6 +10,10 @@ VERSE
   def verses(from, to)
     times = *(to..from)
     times.reverse.map {|x| verse(x)}.join("\n")
+  end
+
+  def song
+    verses(99,0)
   end
 
   def calculate(qty)
